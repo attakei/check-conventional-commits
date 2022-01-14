@@ -1,4 +1,18 @@
 repos:
+  - repo: local
+    hooks:
+      - id: check-conventional-commits
+        name: 'Check "conventional commits"'
+        description: 'Check that commit message is based on  "conventional commits" for pre-commit'
+        entry: python check_conventional_commits.py
+        language: python
+        args: ['--extra-types', 'docs']
+        stages:
+          - commit-msg
+  - repo: https://github.com/psf/black
+    rev: 21.12b0
+    hooks:
+      - id: black
   - repo: https://github.com/PyCQA/doc8
     rev: 0.10.1
     hooks:
