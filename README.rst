@@ -7,7 +7,9 @@ CLI to check about that commit message is based on "conventional commits". (incl
 Description
 ===========
 
-(TBD)
+`Conventional Commits <https://www.conventionalcommits.org/>`_ is specification for commit messages.
+This repository is python package to provide CLI command and ``pre-commit`` hooks definitions
+to check that your commit messages are based on spec of "conventional commits".
 
 Installation & Usage
 ====================
