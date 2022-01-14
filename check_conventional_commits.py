@@ -21,12 +21,14 @@ parser.add_argument(
     help="additional commit types as comma separated text",
 )
 parser.add_argument(
-    "msg_file_path", type=Path, help="commit message file by commit-msg hooks"
+    "msg_file_path",
+    nargs="?",
+    type=Path,
+    help="commit message file by commit-msg hooks",
 )
 
 
-def validate_commit_message(src_path: Path, valid_types: List[str]) -> bool:
-    msg = src_path.read_text()
+def validate_commit_message(msg: str, valid_types: List[str]) -> bool:
     rule = re.compile(
         r"(?P<type>[a-z]+)(\((?P<scope>\w+)\))?!?: (?P<desc>[^\r\n].+)(\n\n(<?P<body>.+))?"
     )
@@ -41,10 +43,22 @@ def validate_commit_message(src_path: Path, valid_types: List[str]) -> bool:
     return True
 
 
+def input_message() -> str:
+    lines = []
+    while True:
+        try:
+            line = input()
+            lines.append(line)
+        except EOFError:
+            break
+    return "\n".join(lines)
+
+
 def main():
     args = parser.parse_args()
+    msg = args.msg_file_path.read_text() if args.msg_file_path else input_message()
     valid_types = DEFAULT_VALID_TYPES + args.extra_types.split(",")
-    result = validate_commit_message(args.msg_file_path, valid_types)
+    result = validate_commit_message(msg, valid_types)
 
     return 0 if result else 1
 
