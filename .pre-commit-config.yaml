@@ -6,7 +6,7 @@ repos:
         description: 'Check that commit message is based on  "conventional commits" for pre-commit'
         entry: python check_conventional_commits.py
         language: python
-        args: ['--extra-types', 'docs']
+        args: ['--extra-types', 'chore,docs']
         stages:
           - commit-msg
   - repo: https://github.com/psf/black
