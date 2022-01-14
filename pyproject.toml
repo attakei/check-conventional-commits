@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "check-conventional-commits"
-version = "0.0.1"
+version = "0.0.2"
 description = "Linting commit message is based on conventional commits"
 authors = ["Kazuya Takei <myself@attakei.net>"]
 license = "Apache-2.0"
