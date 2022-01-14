@@ -53,7 +53,7 @@ You can run it simply in your repository.
 
    repos:
      - repo: https://github.com/attakei/check-conventional-commits
-       rev: v0.0.2
+       rev: v0.0.3
        hooks:
          - id: check-conventional-commits
 
