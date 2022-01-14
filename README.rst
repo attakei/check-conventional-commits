@@ -41,10 +41,24 @@ If you want to append other types, use ``--extra-types``
    $ echo "test: Implement new func" | check-conventional-commits --extra-types=test
    (valid!)
 
-For pre-commit
---------------
+For pre-commit (recommended)
+----------------------------
 
-(TBD)
+This repository includes definition of ``pre-commit`` hooks.
+You can run it simply in your repository.
+
+.. code-block:: yaml
+
+   repos:
+     - repo: https://github.com/attakei/check-conventional-commits
+       rev: v0.0.1
+       hooks:
+         - id: check-conventional-commits
+
+.. note::
+
+   This hook run on "commit-msg" stage.
+   You shoud set commit-msg hooks by ``pre-commit install -t commit-msg``
 
 Contribution
 ============
